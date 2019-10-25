@@ -316,6 +316,8 @@ GenTtbarCategorizer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
         const std::vector<int> orderedJetIndices = nHadronsOrderedJetIndices(bJetAdditionalIds);
         int nHadronsInJet1 = bJetAdditionalIds.at(orderedJetIndices.at(0));
         int nHadronsInJet2 = bJetAdditionalIds.at(orderedJetIndices.at(1));
+        if(bJetAdditionalIds.size() == 4) additionalJetEventId += 10;
+        if(bJetAdditionalIds.size() > 2) additionalJetEventId += 10;   
         // tt + >=2 additional b jets each from 1 additional b hadron
         if(std::max(nHadronsInJet1, nHadronsInJet2) == 1) additionalJetEventId += 53;
         // tt + >=2 additional b jets one of which from >=2 additional b hadrons
